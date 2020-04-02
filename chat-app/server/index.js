@@ -7,7 +7,7 @@ const http = require('http');
 //Setting up Port for deployment later
 //TODO:Comeback when I have server to deploy on
 const PORT = process.env.PORT || 5000;
-const {addUser,getUser,removeUser,getUserRoom}= require('./Users.js')
+const {addUser,getUser,removeUser,getUsersInRoom}= require('./Users.js')
 // importing the router.js file
 const router = require('./router')
 
@@ -39,6 +39,9 @@ io.on('connect',(socket)=>{
         const user = getUser(socket.id)
 
         io.to(user.room).emit('message',{user:user.name,text:message});
+        
+        io.to(user.room).emit('roomData',{room:user.room,users:getUsersInRoom(user.room)})
+
 
         callback();
 
@@ -55,3 +58,4 @@ app.use(router);
 
 // Setting up server and a sanity message 
 server.listen(PORT,()=> console.log(`Server has started on port ${PORT}`))
+
