@@ -2,7 +2,7 @@
 //Socketio for real-time data since it's quicker than http
 
 const express = require('express');
-const socketio = require('socket.io');
+const socketIo = require('socket.io');
 const http = require('http');
 //Setting up Port for deployment later
 //TODO:Comeback when I have server to deploy on
@@ -13,8 +13,9 @@ const router = require('./router')
 
 const app =express();
 const server = http.createServer(app);
-const io = socketio(server);
-
+const io = socketIo(server);
+const cors = require('cors');
+app.use(cors())
 //Socket io implementation for the backend
 
 io.on('connect',(socket)=>{
