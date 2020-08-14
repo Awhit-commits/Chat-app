@@ -9,9 +9,6 @@
     "engines": {
       "npm": "6.13.4",
       "node": "12.16.1"
-    },
-    "dependencies": {
-      "express": "^4.17.1",
-      "nodemon": "^2.0.4"
     }
+    
   }
