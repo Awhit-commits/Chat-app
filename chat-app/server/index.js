@@ -55,7 +55,14 @@ io.on('connect',(socket)=>{
 
 // Use to render what's on the page
 app.use(router);
-
+//When build is in production environment 
+if (process.env.NODE_ENV === 'production') {           
+    app.use(express.static('../client/build'));
+  
+    app.get('*', (req, res) => {
+      res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    });
+  }
 // Setting up server and a sanity message 
 server.listen(PORT,()=> console.log(`Server has started on port ${PORT}`))
 
