@@ -7,8 +7,8 @@
       "start": "cd server && node index.js"
     },
     "engines": {
-      "npm": "6.14.5",
-      "node": "12.18.1"
+      "npm": "6.13.4",
+      "node": "12.16.1"
     },
     "dependencies": {
       "express": "^4.17.1",
